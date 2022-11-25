@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "restaurant-example",
-    "slug": "restaurant-example",
+    "name": "rental-example",
+    "slug": "rental-example",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
