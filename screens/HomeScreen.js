@@ -10,8 +10,11 @@ import {
   FlatList,
 } from "react-native";
 import { Searchbar } from "react-native-paper";
+import { Dimensions } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import colors from "../assets/colors";
+
+const screenWidth = Dimensions.get("window").width;
 
 export default function HomeScreen() {
   const buttonListFontSize = 16;
@@ -55,7 +58,12 @@ export default function HomeScreen() {
   const newOfferList = [
     {
       id: 1,
-      offerName: "Big Chainsaw",
+      offerName: "Big Chainsaw!",
+      offerImg: require("../assets/chainsaw.png"),
+    },
+    {
+      id: 2,
+      offerName: "Idea Origin!",
       offerImg: require("../assets/insp.png"),
     },
   ];
@@ -96,6 +104,15 @@ export default function HomeScreen() {
             </Text>
           </View>
         </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const NewOfferItem = ({ name, img }) => {
+    return (
+      <TouchableOpacity style={styles.newOfferItemView}>
+        <Image source={img} style={styles.offerImage} />
+        <Text style={styles.offerText}>{name}</Text>
       </TouchableOpacity>
     );
   };
@@ -147,7 +164,7 @@ export default function HomeScreen() {
         </ScrollView>
       </View>
       <View style={styles.body}>
-        <ScrollView style={{}}>
+        <ScrollView style={{ width: screenWidth * 0.95 }}>
           <View style={styles.leaseAgain}>
             <Text
               style={{
@@ -186,6 +203,14 @@ export default function HomeScreen() {
             >
               New Offers
             </Text>
+            <NewOfferItem
+              img={newOfferList[1].offerImg}
+              name={newOfferList[1].offerName}
+            />
+            <NewOfferItem
+              img={newOfferList[0].offerImg}
+              name={newOfferList[0].offerName}
+            />
           </View>
         </ScrollView>
       </View>
@@ -197,6 +222,7 @@ const styles = StyleSheet.create({
   body: {
     // justifyContent: "space-between",
     alignItems: "flex-end",
+    flex: 1,
     // height: 400,
     paddingLeft: 10,
     paddingTop: 10,
@@ -216,7 +242,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.55,
   },
   buttonContainer: {
-    width: "90%",
+    width: screenWidth * 0.95,
   },
   container: {
     flex: 1,
@@ -225,7 +251,7 @@ const styles = StyleSheet.create({
   },
   header: {
     height: 220,
-    marginTop: 15,
+    marginTop: 10,
   },
   headerText: {
     width: "100%",
@@ -260,6 +286,22 @@ const styles = StyleSheet.create({
   newOffers: {
     marginTop: 80,
   },
+  newOfferItemView: {
+    height: 250,
+    width: "100%",
+    paddingRight: 15,
+    marginVertical: 10,
+  },
+  offerImage: {
+    height: 180,
+    width: "100%",
+    borderRadius: 15,
+  },
+  offerText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
   searchSection: {
     width: "100%",
     height: 40,
@@ -270,7 +312,7 @@ const styles = StyleSheet.create({
     width: "90%",
   },
   topLists: {
-    alignItems: "center",
+    alignItems: "flex-end",
   },
   topSection: {
     width: "100%",
