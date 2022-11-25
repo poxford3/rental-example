@@ -52,6 +52,14 @@ export default function HomeScreen() {
     },
   ];
 
+  const newOfferList = [
+    {
+      id: 1,
+      offerName: "Big Chainsaw",
+      offerImg: require("../assets/insp.png"),
+    },
+  ];
+
   const RoundButton = ({ text, icon, fontSize }) => {
     return (
       <TouchableOpacity style={styles.buttons}>
@@ -135,37 +143,51 @@ export default function HomeScreen() {
           <RoundButton text="Electronics" fontSize={buttonListFontSize} />
           <RoundButton text="Tools" fontSize={buttonListFontSize} />
           <RoundButton text="Outdoors" fontSize={buttonListFontSize} />
+          <RoundButton text="Indoors" fontSize={buttonListFontSize} />
         </ScrollView>
       </View>
       <View style={styles.body}>
-        <View style={styles.leaseAgain}>
-          <Text
-            style={{
-              fontSize: 25,
-              color: colors.black,
-              fontWeight: "bold",
-              marginBottom: 5,
-            }}
-          >
-            Lease again
-          </Text>
-          <FlatList
-            data={itemsToLeaseAgain}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item }) => (
-              <ItemOption
-                img={item.img}
-                name={item.itemName}
-                costHour={item.costPerHour}
-                costDay={item.costPerDay}
-                costWeek={item.costPerWeek}
-                dist={item.distance}
-              />
-            )}
-          />
-        </View>
-        <View style={styles.newOffers}></View>
+        <ScrollView style={{}}>
+          <View style={styles.leaseAgain}>
+            <Text
+              style={{
+                fontSize: 25,
+                color: colors.black,
+                fontWeight: "bold",
+                marginBottom: 5,
+              }}
+            >
+              Lease again
+            </Text>
+            <FlatList
+              data={itemsToLeaseAgain}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <ItemOption
+                  img={item.img}
+                  name={item.itemName}
+                  costHour={item.costPerHour}
+                  costDay={item.costPerDay}
+                  costWeek={item.costPerWeek}
+                  dist={item.distance}
+                />
+              )}
+            />
+          </View>
+          <View style={styles.newOffers}>
+            <Text
+              style={{
+                fontSize: 25,
+                color: colors.black,
+                fontWeight: "bold",
+                marginBottom: 5,
+              }}
+            >
+              New Offers
+            </Text>
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -174,9 +196,10 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   body: {
     // justifyContent: "space-between",
-    alignItems: "center",
-    height: 400,
-    padding: 10,
+    alignItems: "flex-end",
+    // height: 400,
+    paddingLeft: 10,
+    paddingTop: 10,
   },
   buttons: {
     flexDirection: "row",
@@ -222,7 +245,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   leaseAgain: {
-    width: "90%",
+    // width: "90%",
   },
   leaseImage: {
     height: 200,
@@ -233,6 +256,9 @@ const styles = StyleSheet.create({
     height: 250,
     width: 250,
     marginRight: 10,
+  },
+  newOffers: {
+    marginTop: 80,
   },
   searchSection: {
     width: "100%",
