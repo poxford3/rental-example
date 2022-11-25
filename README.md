@@ -8,7 +8,11 @@ This project is a proof of concept from an [inspiration website](https://dribbbl
 [screenshot2]: /assets/screenshot2.png "Scrolled Down"
 
 Once loaded:
-![first entry into app picture][screnshot1]
+
+<!-- ![first entry into app picture][screenshot1] -->
+<img src="/assets/screenshot1.png" alt="First View" height=200>
 
 Scrolled down:
-![scrolled view in app picture][screenshot2]
+
+<!-- ![scrolled view in app picture][screenshot2] -->
+<img src="/assets/screenshot2.png" alt="Scrolled Down" height=200>
